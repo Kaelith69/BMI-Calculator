@@ -19,25 +19,29 @@ String calculate() {
   }
 
   String getResult() {
-    if (_bmi >= 25) {
-      return 'overweight';
-    } else if (_bmi > 18.5) {
-      return 'normal';
+    if (_bmi >= 30.0) {
+      return 'Obese';
+    } else if (_bmi >= 25.0) {
+      return 'Overweight';
+    } else if (_bmi >= 18.5) {
+      return 'Normal';
     } else {
-      return 'underweight';
+      return 'Underweight';
     }
   }
 
   String getMeaning() {
     switch (getResult()) {
-      case 'overweight':
-        return 'You have higher than normal body weight, Try to exercise more';
-      case 'normal':
-        return 'Great you have healthy BMI, keep it up';
-      case 'underweight':
-        return 'You are underweight, Try to eat a bit more';
+      case 'Obese':
+        return 'You are obese. Please consult a doctor and consider a structured diet and exercise plan.';
+      case 'Overweight':
+        return 'You have a higher than normal body weight. Try to exercise more and watch your diet.';
+      case 'Normal':
+        return 'Great! You have a healthy BMI. Keep it up!';
+      case 'Underweight':
+        return 'You are underweight. Try to eat a bit more and consult a nutritionist if needed.';
       default:
-        return ''; 
+        return '';
     }
   }
 }

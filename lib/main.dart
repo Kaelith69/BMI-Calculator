@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'input_page.dart';
+import 'package:bmi/input_page.dart';
 
 void main() => runApp(const BMIcalculator());
 
@@ -19,7 +19,7 @@ class BMIcalculator extends StatelessWidget {
         floatingActionButtonTheme: const FloatingActionButtonThemeData(elevation: 20,
         backgroundColor: Colors.white54),
       ),
-      home:  InputPage(),
+      home: const InputPage(),
     );
   }
 }
