@@ -1,28 +1,42 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:bmi/brain.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const Scaffold());
+  group('CalcBrain', () {
+    test('calculates BMI correctly', () {
+      final brain = CalcBrain(weight: 70, height: 175);
+      expect(brain.calculate(), '22.9');
+    });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    test('returns Normal for healthy BMI', () {
+      final brain = CalcBrain(weight: 70, height: 175);
+      expect(brain.getResult(), 'Normal');
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    test('returns Underweight for low BMI', () {
+      final brain = CalcBrain(weight: 45, height: 175);
+      expect(brain.getResult(), 'Underweight');
+    });
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    test('returns Overweight for high BMI', () {
+      final brain = CalcBrain(weight: 90, height: 175);
+      expect(brain.getResult(), 'Overweight');
+    });
+
+    test('returns Obese for very high BMI', () {
+      final brain = CalcBrain(weight: 120, height: 175);
+      expect(brain.getResult(), 'Obese');
+    });
+
+    test('boundary: BMI exactly 18.5 is Normal', () {
+      // weight = 18.5 * (1.70)^2 ≈ 53.5 kg
+      final brain = CalcBrain(weight: 54, height: 170);
+      expect(brain.getResult(), 'Normal');
+    });
+
+    test('getMeaning returns non-empty string', () {
+      final brain = CalcBrain(weight: 70, height: 175);
+      expect(brain.getMeaning(), isNotEmpty);
+    });
   });
 }

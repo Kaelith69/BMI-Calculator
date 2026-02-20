@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'costants.dart';
+import 'package:bmi/constants.dart';
 
 
-class custom extends StatelessWidget {
-  const custom({super.key, required this.icon, required this.label});
+class IconContent extends StatelessWidget {
+  const IconContent({super.key, required this.icon, required this.label});
 
   final IconData icon;
   final String label;

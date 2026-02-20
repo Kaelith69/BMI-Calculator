@@ -1,12 +1,17 @@
-import 'package:bmi/costants.dart';
+import 'package:bmi/constants.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  Result({super.key, required this.BMIresult,required this.ResultText,required this.mean})
+  const Result({
+    super.key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.mean,
+  });
 
-;  final String BMIresult;
- final String ResultText;
- final String mean;
+  final String bmiResult;
+  final String resultText;
+  final String mean;
 
 
   @override
@@ -47,7 +52,7 @@ class Result extends StatelessWidget {
                   children: [
                     Center(
                       child: Text(
-                        ResultText,
+                        resultText,
                         style: kheightstyle,
                       ),
                     ),
@@ -55,13 +60,19 @@ class Result extends StatelessWidget {
                       children: [
                         Center(
                           child: Text(
-                           'Your BMI result is ',
-                            style: klabeltextstyle.copyWith(color: Colors.tealAccent,
+                            'Your BMI result is',
+                            style: klabeltextstyle.copyWith(
+                                color: Colors.tealAccent,
                                 fontWeight: FontWeight.w400),
                           ),
                         ),
-                        Center(child: Text(BMIresult,style: klabeltextstyle.copyWith(fontSize: 100,
-                            fontWeight: FontWeight.w900),),)
+                        Center(
+                          child: Text(
+                            bmiResult,
+                            style: klabeltextstyle.copyWith(
+                                fontSize: 100, fontWeight: FontWeight.w900),
+                          ),
+                        )
                       ],
                     ),
                     Padding(
